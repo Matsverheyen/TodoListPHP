@@ -1,5 +1,15 @@
- #buttona {
-   position: absolute;
-   top: 0;
-   right: 0;
- }
+/* CSS used here will be applied after bootstrap.css */
+.jumbotron {
+  position: relative;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+#buttonmenu {
+  position: absolute;
+  float: right;
+  top: 5px;
+  right: 5px;
+}

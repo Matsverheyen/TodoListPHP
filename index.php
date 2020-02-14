@@ -5,13 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./style.css">
+  <script src="https://kit.fontawesome.com/fc3b8b1cce.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
+    <link rel="stylesheet" href="style.css">
   <title>Todo List</title>
 </head>
 
@@ -22,7 +23,7 @@ $sql = "SELECT * FROM `todos`";
 $result = $conn->query($sql);
 ?>
   <div class="container mt-4">
-  <button class="btn btn-primary" id="newNote">new</button>
+  <button class="btn btn-primary mb-4" id="newNote"><i class="fas fa-pencil-alt"></i> New</button>
       <div id="noteEdit">
       <form action="add.php" method="post">
         <div class="form-group">
@@ -33,7 +34,7 @@ $result = $conn->query($sql);
           <label for="formGroupExampleInput2">Beschrijving</label>
           <input type="text" class="form-control" id="beschrijving" name="beschrijving" placeholder="beschrijving">
         </div>
-        <input type="submit">
+        <input class="btn btn-success" type="submit" value="Opslaan">
       </form>
     </div>
     <?php 
@@ -44,8 +45,6 @@ if($result->num_rows > 0) {
         $beschrijving= $row["beschrijving"];
         include 'card.php';
     }
-} else {
-    echo "0 results";
 }
 ?>
 

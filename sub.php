@@ -6,5 +6,4 @@
     <button id="<?=$id?>" class="editSub btn btn-primary" type="button">Edit</button>
     <button id="<?=$id?>" class="saveSub<?=$id?> saveSub btn btn-success" type="button">Save</button>
     <button id="<?=$id?>" class="cancelSub<?=$id?> cancelSub btn btn-danger" type="button">Cancel</button>
-
   </div>

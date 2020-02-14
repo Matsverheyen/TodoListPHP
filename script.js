@@ -75,7 +75,7 @@ $(function () {
   })
 
   $(".editCancel").on("click", function () {
-    console.log(this.id)
+    $(`.newSub${this.id}`).show();
     $('.buttonb').prop("disabled", false)
     $(this).hide();
     $(".editBtn").hide();
@@ -86,6 +86,7 @@ $(function () {
   })
 
   $(".buttonb").on("click", function () {
+    $(`.newSub${this.id}`).hide()
     $('.buttonb').prop("disabled", true)
     $(this).hide();
     $(`.dataText${this.id}`).hide()
