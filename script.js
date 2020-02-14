@@ -1,4 +1,5 @@
 $(function () {
+  $("#subEdit").hide();
   $(".editField").hide();
   $(".editBtn").hide();
   $("#noteEdit").hide();
@@ -20,6 +21,15 @@ $(function () {
     });
   })
 
+  $(".deleteSub").on("click", function () {
+    data = {
+      'id': this.id
+    }
+    $.post('deleteSub.php', data, function (response) {
+      window.location = 'index.php'
+    });
+  })
+
   $(".buttona").on("click", function () {
     data = {
       'id': this.id
@@ -27,6 +37,10 @@ $(function () {
     $.post('delete.php', data, function (response) {
       window.location = 'index.php'
     });
+  })
+
+  $(".newSub").on("click", function() {
+$("#subEdit").show();
   })
 
   $(".editCancel").on("click", function () {

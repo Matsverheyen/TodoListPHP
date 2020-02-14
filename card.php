@@ -14,6 +14,17 @@ $res = $conn->query($sql2);
           <input type="text" class="editField editField<?=$id?>" id="titeledit<?=$id?>" value="">
           <p class="lead dataText<?=$id?>" id="beschrijving-<?=$id?>"><?=$beschrijving?></p>
           <input type="text" class="editField editField<?=$id?>" id="beschrijvingedit<?=$id?>" value="">
+          <button id="<?=$id?>" class="newSub btn btn-primary">New</button>
+                <div id="subEdit">
+      <form action="addSub.php" method="post">
+        <div class="form-group">
+          <label for="formGroupExampleInput">Titel</label>
+          <input type="text" class="form-control" id="titel" name="titel" placeholder="titel">
+          <input type="hidden" id="todoID" name="todoID" value="<?=$id?>">
+        </div>
+        <input type="submit">
+      </form>
+    </div>
           <ul class="list-group">
     <?php 
 if($res->num_rows > 0) {
