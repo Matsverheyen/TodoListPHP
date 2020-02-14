@@ -15,7 +15,7 @@ $res = $conn->query($sql2);
           <p class="lead dataText<?=$id?>" id="beschrijving-<?=$id?>"><?=$beschrijving?></p>
           <input type="text" class="editField editField<?=$id?>" id="beschrijvingedit<?=$id?>" value="">
           <button id="<?=$id?>" class="newSub btn btn-primary">New</button>
-                <div id="subEdit">
+                <div id="<?=$id?>" class="subEdit subEdit<?=$id?>">
       <form action="addSub.php" method="post">
         <div class="form-group">
           <label for="formGroupExampleInput">Titel</label>

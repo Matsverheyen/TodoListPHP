@@ -1,5 +1,8 @@
 $(function () {
-  $("#subEdit").hide();
+  $(".subEdit").hide();
+  $(".editSubField").hide();
+  $(".cancelSub").hide();
+  $(".saveSub").hide();
   $(".editField").hide();
   $(".editBtn").hide();
   $("#noteEdit").hide();
@@ -30,6 +33,17 @@ $(function () {
     });
   })
 
+    $(".saveSub").on("click", function () {
+      var titel = '.editSubField' + this.id
+      data = {
+        'id': this.id,
+        'titel': $(titel).val()
+      }
+      $.post('editSub.php', data, function (response) {
+        window.location = 'index.php'
+      });
+    })
+
   $(".buttona").on("click", function () {
     data = {
       'id': this.id
@@ -39,8 +53,25 @@ $(function () {
     });
   })
 
-  $(".newSub").on("click", function() {
-$("#subEdit").show();
+  $(".editSub").on("click", function(){
+    $(this).hide();
+    $("#list" + this.id).hide();
+    $(".editSubField"+this.id).show();
+    $(".cancelSub"+this.id).show();
+    $(".saveSub"+this.id).show();
+    $("#subEdit" + this.id).val($(`#list${this.id}`).text())
+  })
+
+  $(".cancelSub").on("click", function() {
+    $(this).hide();
+    $(".editSub").show();
+    $(".saveSub").hide();
+    $(".editSubField"+this.id).hide();
+    $("#list"+this.id).show();
+  })
+
+  $(".newSub").on("click", function () {
+    $(".subEdit" + this.id).show();
   })
 
   $(".editCancel").on("click", function () {
