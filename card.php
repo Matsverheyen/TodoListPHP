@@ -1,5 +1,6 @@
     <div class="col-md-12" id="<?=$id?>">
       <div class="jumbotron">
+      <button id="<?=$id?>" type="button" class="buttona btn btn-danger">Delete</button>
         <div class="container">
           <h1 class="display-3"><?=$titel?></h1>
           <p class="lead"><?=$beschrijving?></p>
