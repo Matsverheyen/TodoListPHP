@@ -7,6 +7,19 @@ $(function () {
     $("#noteEdit").show();
   })
 
+  $(".editBtn").on("click", function () {
+    var titel = '#titeledit' + this.id
+    var beschrijving = '#beschrijvingedit' + this.id
+    data = {
+      'id': this.id,
+      'titel': $(titel).val(),
+      'beschrijving': $(beschrijving).val()
+    }
+    $.post('edit.php', data, function (response) {
+      window.location = 'index.php'
+    });
+  })
+
   $(".buttona").on("click", function () {
     data = {
       'id': this.id
@@ -17,19 +30,23 @@ $(function () {
   })
 
   $(".editCancel").on("click", function () {
+    console.log(this.id)
+    $('.buttonb').prop("disabled", false)
     $(this).hide();
     $(".editBtn").hide();
     $(".buttonb").show();
-    $(".dataText").show();
+    $(`#titel-${this.id}`).show()
+    $(`#beschrijving-${this.id}`).show()
     $(".editField").hide();
   })
 
   $(".buttonb").on("click", function () {
+    $('.buttonb').prop("disabled", true)
     $(this).hide();
-    $(".dataText").hide()
-    $(".editField").show();
-    $(".editCancel").show();
-    $(".editBtn").show();
+    $(`.dataText${this.id}`).hide()
+    $(`.editField${this.id}`).show();
+    $(`.edit${this.id}`).show();
+    $(`.cancel${this.id}`).show();
     $(`#titeledit${this.id}`).val($(`#titel-${this.id}`).text())
     $(`#beschrijvingedit${this.id}`).val($(`#beschrijving-${this.id}`).text())
   })
