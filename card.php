@@ -1,3 +1,8 @@
+      <?php
+include 'connect.php';
+$sql2 = "SELECT * FROM `todossub` WHERE todoID = $id";
+$res = $conn->query($sql2);
+?>
     <div class="col-md-12" id="<?=$id?>">
       <div class="jumbotron">
       <button id="buttona<?=$id?>" type="button" class="buttona btn btn-danger">Delete</button>
@@ -10,9 +15,17 @@
           <p class="lead dataText<?=$id?>" id="beschrijving-<?=$id?>"><?=$beschrijving?></p>
           <input type="text" class="editField editField<?=$id?>" id="beschrijvingedit<?=$id?>" value="">
           <ul class="list-group">
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+    <?php 
+if($res->num_rows > 0) {
+    while($row = $res->fetch_assoc()) {
+        $id = $row["id"];
+        $titel = $row["titel"];
+        include 'sub.php';
+    }
+} else {
+    echo "0 results";
+}
+?>
           </ul>
         </div>
       </div>
