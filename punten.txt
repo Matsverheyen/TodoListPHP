@@ -1,0 +1,4 @@
+-Bootstrap ipv w3
+-Je kan geen ' plaatsen
+-Je kan lege opsturen
+-XSS

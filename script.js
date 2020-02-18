@@ -102,7 +102,7 @@ $(function () {
     $(`.editField${this.id}`).show();
     $(`.edit${this.id}`).show();
     $(`.cancel${this.id}`).show();
-    $(`#titeledit${this.id}`).val($(`#titel-${this.id}`).text())
+    $(`#titeledit${this.id}`).val($(`#titel-${this.id}`).contents().get(0).nodeValue)
     $(`#beschrijvingedit${this.id}`).val($(`#beschrijving-${this.id}`).text())
   })
 });
