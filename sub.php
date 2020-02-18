@@ -1,5 +1,5 @@
 
-<li id="list<?=$id?>" class="list-group-item"><?=$titel?></li>
+<li id="list<?=$id?>" class="list-group-item"><?php echo htmlspecialchars($titel)?></li>
 <input type="text" class="editSubField editSubField<?=$id?>" id="subEdit<?=$id?>" value="">
 <div class="list-group-append">
     <button id="<?=$id?>" class="deleteSub btn btn-danger" type="button">Delete</button>
