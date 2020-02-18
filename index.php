@@ -43,6 +43,7 @@ if($result->num_rows > 0) {
         $id = $row["id"];
         $titel = $row["titel"];
         $beschrijving= $row["beschrijving"];
+        $active = $row["active"];
         include 'card.php';
     }
 }

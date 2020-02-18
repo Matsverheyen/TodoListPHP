@@ -4,8 +4,10 @@ $sql2 = "SELECT * FROM `todossub` WHERE todoID = $id";
 $res = $conn->query($sql2);
 ?>
     <div class="col-md-12" id="<?=$id?>">
-      <div class="jumbotron">
-      <div id="buttonmenu"><button id="<?=$id?>" type="button" class="round buttona btn btn-danger"><i class="fas fa-times"></i></button></div>
+      <div class="topborder<?=$active?> jumbotron shadow">
+      <div id="buttonmenu">
+      <button id="<?=$id?>" type="button" class="round check btn btn-success"><i class="fas fa-check"></i></button>
+      <button id="<?=$id?>" type="button" class="round buttona btn btn-danger"><i class="fas fa-times"></i></button></div>
       <button id="<?=$id?>" type="button" class="edit<?=$id?> editBtn btn btn-success"><i class="fas fa-save"></i> Save</button>
       <button id="<?=$id?>" type="button" class="cancel<?=$id?> editCancel btn btn-danger"><i class="fas fa-times"></i> Cancel</button>
         <div class="container">
@@ -21,7 +23,7 @@ $res = $conn->query($sql2);
           <input type="text" class="form-control" id="titel" name="titel" placeholder="titel">
           <input type="hidden" id="todoID" name="todoID" value="<?=$id?>">
         </div>
-        <input class="btn btn-primary" type="submit">
+        <input class="btn btn-primary" type="submit" value="Opslaan">
       </form>
     </div>
           <ul class="list-group">
