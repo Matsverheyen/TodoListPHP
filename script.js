@@ -11,6 +11,12 @@ $(function () {
     $("#noteEdit").show();
   })
 
+  $("#sort").on("click", function () {
+    $.post('sort.php', "{}", function (response) {
+      window.location = 'index.php'
+    });
+  })
+
   $(".editBtn").on("click", function () {
     var titel = '#titeledit' + this.id
     var beschrijving = '#beschrijvingedit' + this.id
