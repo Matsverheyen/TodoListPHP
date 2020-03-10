@@ -18,10 +18,16 @@
 </head>
 
 <body>
-  <?php
+<?php 
 include 'connect.php';
-$sql = "SELECT * FROM `todos`";
-$result = $conn->query($sql);
+$query = $_GET['query'];
+if (isset($query)) {
+  $sql = "SELECT * FROM `todos` WHERE titel LIKE '%$_GET[query]%'";
+  $result = $conn->query($sql);
+} else {
+  $sql = "SELECT * FROM `todos`";
+  $result = $conn->query($sql);
+}
 ?>
   <div class="container mt-4">
   <button class="btn btn-primary mb-4" id="newNote"><i class="fas fa-pencil-alt"></i> New</button>
