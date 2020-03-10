@@ -24,6 +24,12 @@ $query = $_GET['query'];
 if (isset($query)) {
   $sql = "SELECT * FROM `todos` WHERE titel LIKE '%$_GET[query]%'";
   $result = $conn->query($sql);
+} else if (isset($_GET['sort']) AND isset($query))  {
+  $sql = "SELECT * FROM `todos` WHERE titel LIKE '%$_GET[query]%' ORDER BY titel ASC";
+  $result = $conn->query($sql);
+} else if (isset($_GET['sort'])) {
+  $sql = "SELECT * FROM `todos` ORDER BY titel ASC";
+  $result = $conn->query($sql);
 } else {
   $sql = "SELECT * FROM `todos`";
   $result = $conn->query($sql);
@@ -34,6 +40,10 @@ if (isset($query)) {
   <form action="" method="GET">
   <input type="text" name="query" id="query" placeholder="Zoek" class="mt-3 mb-3 form-control">
   <input type="submit" id="<?=$id?>" value="zoek" class="btn btn-primary"></input>
+  </form>
+  <form action="" method="GET">
+  <input type="hidden" name="sort" value="sort">
+  <input type="submit" id="<?=$id?>" value="sorteer" class="btn btn-primary"></input>
   </form>
       <div id="noteEdit">
       <form action="add.php" method="post">
