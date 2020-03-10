@@ -1,4 +1,5 @@
-      <?php
+
+          <?php
 include 'connect.php';
 $sql2 = "SELECT * FROM `todossub` WHERE todoID = $id";
 $res = $conn->query($sql2);
@@ -15,6 +16,7 @@ $res = $conn->query($sql2);
           <input type="text" class="mt-3 editField editField<?=$id?> form-control" id="titeledit<?=$id?>" value="">
           <p class="lead dataText<?=$id?>" id="beschrijving-<?=$id?>"><?php echo htmlspecialchars($beschrijving)?></p>
           <input type="text" class="mt-3 editField editField<?=$id?> form-control" id="beschrijvingedit<?=$id?>" value="">
+          </form>
           <button id="<?=$id?>" class="newSub<?=$id?> newSub btn btn-primary">Nieuwe Subtaak</button>
                 <div id="<?=$id?>" class="subEdit<?=$id?> subEdit">
       <form action="addSub.php" method="post">
@@ -27,7 +29,7 @@ $res = $conn->query($sql2);
       </form>
     </div>
           <ul class="list-group">
-    <?php 
+              <?php 
 if($res->num_rows > 0) {
     while($row = $res->fetch_assoc()) {
         $id = $row["id"];

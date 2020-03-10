@@ -11,8 +11,12 @@ $(function () {
     $("#noteEdit").show();
   })
 
-  $("#sort").on("click", function () {
-    $.post('sort.php', "{}", function (response) {
+  $(".sort").on("click", function () {
+    data = {
+      'id': this.id,
+      'query': $('#query').val()
+    }
+    $.post('zoek.php', data, function (response) {
       window.location = 'index.php'
     });
   })

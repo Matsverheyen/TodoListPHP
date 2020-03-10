@@ -12,6 +12,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
+  <script src="./script.js"></script>
     <link rel="stylesheet" href="style.css">
   <title>Todo List</title>
 </head>
@@ -24,6 +25,10 @@ $result = $conn->query($sql);
 ?>
   <div class="container mt-4">
   <button class="btn btn-primary mb-4" id="newNote"><i class="fas fa-pencil-alt"></i> New</button>
+  <form action="" method="GET">
+  <input type="text" name="query" id="query" placeholder="Zoek" class="mt-3 mb-3 form-control">
+  <input type="submit" id="<?=$id?>" value="zoek" class="btn btn-primary"></input>
+  </form>
       <div id="noteEdit">
       <form action="add.php" method="post">
         <div class="form-group">
@@ -50,7 +55,6 @@ if($result->num_rows > 0) {
 ?>
 
   </div>
-    <script src="./script.js"></script>
 </body>
 
 </html>
