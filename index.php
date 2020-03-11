@@ -20,15 +20,18 @@
 <body>
 <?php 
 include 'connect.php';
-$query = $_GET['query'];
-if (isset($query)) {
-  $sql = "SELECT * FROM `todos` WHERE titel LIKE '%$_GET[query]%'";
+$query = $_POST['query'];
+if (isset($_POST['sort']) AND $_POST['sort'] == 0) {
+  $sql = "SELECT * FROM `todos`";
   $result = $conn->query($sql);
-} else if (isset($_GET['sort']) AND isset($query))  {
-  $sql = "SELECT * FROM `todos` WHERE titel LIKE '%$_GET[query]%' ORDER BY titel ASC";
+} else if (isset($_POST['sort']) AND isset($query))  {
+  $sql = "SELECT * FROM `todos` WHERE titel LIKE '%$_POST[query]%' ORDER BY titel ASC";
   $result = $conn->query($sql);
-} else if (isset($_GET['sort'])) {
+} else if (isset($_POST['sort'])) {
   $sql = "SELECT * FROM `todos` ORDER BY titel ASC";
+  $result = $conn->query($sql);
+} else if (isset($query)) {
+  $sql = "SELECT * FROM `todos` WHERE titel LIKE '%$_POST[query]%'";
   $result = $conn->query($sql);
 } else {
   $sql = "SELECT * FROM `todos`";
@@ -37,13 +40,14 @@ if (isset($query)) {
 ?>
   <div class="container mt-4">
   <button class="btn btn-primary mb-4" id="newNote"><i class="fas fa-pencil-alt"></i> New</button>
-  <form action="" method="GET">
+  <form action="" method="POST">
   <input type="text" name="query" id="query" placeholder="Zoek" class="mt-3 mb-3 form-control">
   <input type="submit" id="<?=$id?>" value="zoek" class="btn btn-primary"></input>
-  </form>
-  <form action="" method="GET">
-  <input type="hidden" name="sort" value="sort">
+  <input type="hidden" name="sort" value="1">
   <input type="submit" id="<?=$id?>" value="sorteer" class="btn btn-primary"></input>
+  </form>
+  <form action="" method="POST">
+  <button class="btn btn-primary resetFilter" name="sort" value="0">Reset filters</button>
   </form>
       <div id="noteEdit">
       <form action="add.php" method="post">
