@@ -93,6 +93,15 @@ $(function () {
       });
     })
 
+    $(".checkSub").on("click", function () {
+      data = {
+        'id': this.id
+      }
+      $.post('checkSub.php', data, function (response) {
+        window.location = 'index.php'
+      });
+    })
+
   $(".editCancel").on("click", function () {
     $(`.newSub${this.id}`).show();
     $('.buttonb').prop("disabled", false)
