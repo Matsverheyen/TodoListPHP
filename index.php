@@ -21,11 +21,14 @@
 <?php 
 include 'connect.php';
 $query = $_POST['query'];
-if (isset($_POST['sort']) AND $_POST['sort'] == 0) {
+if (isset($_POST['sort']) AND $_POST['sort'] == 0 AND $_POST['filter'] == 0) {
   $sql = "SELECT * FROM `todos`";
   $result = $conn->query($sql);
-} else if (isset($_POST['sort']) AND isset($query))  {
+} else if (isset($_POST['sort']) AND isset($query)) {
   $sql = "SELECT * FROM `todos` WHERE titel LIKE '%$_POST[query]%' ORDER BY titel ASC";
+  $result = $conn->query($sql);
+} else if (isset($_POST['filter'])) {
+  $sql = "SELECT * FROM `todos` WHERE active = 1";
   $result = $conn->query($sql);
 } else if (isset($_POST['sort'])) {
   $sql = "SELECT * FROM `todos` ORDER BY titel ASC";
@@ -46,6 +49,9 @@ if (isset($_POST['sort']) AND $_POST['sort'] == 0) {
   <input type="hidden" name="sort" value="1">
   <input type="submit" id="<?=$id?>" value="sorteer" class="btn btn-primary"></input>
   </form>
+  <form action="" method="POST">
+  <input type="hidden" name="filter" value="filter">
+  <input type="submit" id="<?=$id?>" value="Filter op nog te doen" class="filter btn btn-primary"></input></form>
   <form action="" method="POST">
   <button class="btn btn-primary resetFilter" name="sort" value="0">Reset filters</button>
   </form>

@@ -11,16 +11,6 @@ $(function () {
     $("#noteEdit").show();
   })
 
-  $(".sort").on("click", function () {
-    data = {
-      'id': this.id,
-      'query': $('#query').val()
-    }
-    $.post('zoek.php', data, function (response) {
-      window.location = 'index.php'
-    });
-  })
-
   $(".editBtn").on("click", function () {
     var titel = '#titeledit' + this.id
     var beschrijving = '#beschrijvingedit' + this.id
